@@ -1,24 +1,749 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>residency-inn-website-suite</title>
-    <meta name="description" content="Lovable Generated Project" />
-    <meta name="author" content="Lovable" />
-
-    <meta property="og:title" content="residency-inn-website-suite" />
-    <meta property="og:description" content="Lovable Generated Project" />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
-
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@lovable_dev" />
-    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+    <title>The Rose Residency Inn - Luxury Hotel in Hyderabad</title>
+    <meta name="description" content="Experience affordable luxury at The Rose Residency Inn in Banjara Hills, Hyderabad. Premium rooms, world-class amenities, and exceptional service." />
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+      :root {
+        --primary-color: #8B4513;
+        --secondary-color: #D4AF37;
+        --accent-color: #1B4F72;
+        --light-bg: #F8F6F0;
+        --text-dark: #2C3E50;
+        --text-light: #6C7B7F;
+      }
+      
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      
+      body {
+        font-family: 'Poppins', sans-serif;
+        line-height: 1.6;
+        color: var(--text-dark);
+      }
+      
+      /* Navbar Styles */
+      .navbar {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        transition: all 0.3s ease;
+      }
+      
+      .navbar-brand {
+        font-weight: 700;
+        font-size: 1.5rem;
+        color: var(--primary-color) !important;
+      }
+      
+      .navbar-nav .nav-link {
+        font-weight: 500;
+        margin: 0 10px;
+        transition: color 0.3s ease;
+      }
+      
+      .navbar-nav .nav-link:hover {
+        color: var(--secondary-color) !important;
+      }
+      
+      .contact-info {
+        font-size: 0.9rem;
+        color: var(--accent-color);
+      }
+      
+      /* Hero Section */
+      .hero {
+        height: 100vh;
+        background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1487958449943-2429e8be8625?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: white;
+      }
+      
+      .hero h1 {
+        font-size: 3.5rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+      }
+      
+      .hero p {
+        font-size: 1.3rem;
+        margin-bottom: 2rem;
+      }
+      
+      .btn-primary {
+        background: var(--secondary-color);
+        border: none;
+        padding: 12px 30px;
+        font-weight: 600;
+        border-radius: 50px;
+        transition: all 0.3s ease;
+      }
+      
+      .btn-primary:hover {
+        background: var(--primary-color);
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      }
+      
+      /* Section Styles */
+      .section-padding {
+        padding: 80px 0;
+      }
+      
+      .section-title {
+        text-align: center;
+        margin-bottom: 3rem;
+      }
+      
+      .section-title h2 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+      }
+      
+      .section-title p {
+        font-size: 1.1rem;
+        color: var(--text-light);
+      }
+      
+      /* Feature Cards */
+      .feature-card {
+        background: white;
+        padding: 2rem;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        transition: all 0.3s ease;
+        height: 100%;
+        text-align: center;
+      }
+      
+      .feature-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+      }
+      
+      .feature-card i {
+        font-size: 3rem;
+        color: var(--secondary-color);
+        margin-bottom: 1rem;
+      }
+      
+      .feature-card h4 {
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+        font-weight: 600;
+      }
+      
+      /* Attractions Section */
+      .attractions {
+        background: var(--light-bg);
+      }
+      
+      .attraction-card {
+        background: white;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        transition: all 0.3s ease;
+      }
+      
+      .attraction-card:hover {
+        transform: translateY(-5px);
+      }
+      
+      .attraction-card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+      }
+      
+      .attraction-card .card-body {
+        padding: 1.5rem;
+      }
+      
+      /* Testimonials */
+      .testimonial-card {
+        background: white;
+        padding: 2rem;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        text-align: center;
+        height: 100%;
+      }
+      
+      .testimonial-card .stars {
+        color: var(--secondary-color);
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+      }
+      
+      /* FAQ Accordion */
+      .accordion-button {
+        background: var(--light-bg);
+        color: var(--primary-color);
+        font-weight: 600;
+      }
+      
+      .accordion-button:not(.collapsed) {
+        background: var(--primary-color);
+        color: white;
+      }
+      
+      /* Footer */
+      .footer {
+        background: var(--text-dark);
+        color: white;
+        padding: 50px 0 20px;
+      }
+      
+      .footer h5 {
+        color: var(--secondary-color);
+        margin-bottom: 1rem;
+      }
+      
+      .footer a {
+        color: #ccc;
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+      
+      .footer a:hover {
+        color: var(--secondary-color);
+      }
+      
+      /* Back to Top Button */
+      .back-to-top {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        background: var(--secondary-color);
+        color: white;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+        text-decoration: none;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        z-index: 1000;
+      }
+      
+      .back-to-top.show {
+        opacity: 1;
+        visibility: visible;
+      }
+      
+      .back-to-top:hover {
+        background: var(--primary-color);
+        color: white;
+        transform: translateY(-3px);
+      }
+      
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .hero h1 {
+          font-size: 2.5rem;
+        }
+        
+        .hero p {
+          font-size: 1.1rem;
+        }
+        
+        .contact-info {
+          display: none;
+        }
+        
+        .section-padding {
+          padding: 50px 0;
+        }
+      }
+    </style>
   </head>
 
   <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+    <!-- Top Contact Bar -->
+    <div class="bg-dark text-white py-2 d-none d-lg-block">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <small><i class="fas fa-phone me-2"></i>+91 9346017770</small>
+          </div>
+          <div class="col-md-6 text-end">
+            <small><i class="fas fa-envelope me-2"></i>reservations.residencyinn@gmail.com</small>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#home">
+          <i class="fas fa-rose me-2"></i>The Rose Residency Inn
+        </a>
+        
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#home">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#about">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#rooms">Rooms</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#amenities">Amenities</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#gallery">Gallery</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#contact">Contact</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#other-hotels">Other Hotels</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 mx-auto" data-aos="fade-up">
+            <h1>Welcome to The Rose Residency Inn</h1>
+            <p>Experience Affordable Luxury in the Heart of Hyderabad</p>
+            <a href="#rooms" class="btn btn-primary btn-lg">Book Your Stay</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="section-padding">
+      <div class="container">
+        <div class="section-title" data-aos="fade-up">
+          <h2>Why Choose The Rose Residency Inn?</h2>
+          <p>Discover the perfect blend of comfort, convenience, and luxury</p>
+        </div>
+        
+        <div class="row g-4">
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="feature-card">
+              <i class="fas fa-star"></i>
+              <h4>Top-Rated Comfort</h4>
+              <p>Exceptional comfort with premium amenities</p>
+            </div>
+          </div>
+          
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="feature-card">
+              <i class="fas fa-map-marker-alt"></i>
+              <h4>Prime Location</h4>
+              <p>Located in prestigious Banjara Hills</p>
+            </div>
+          </div>
+          
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
+            <div class="feature-card">
+              <i class="fas fa-wifi"></i>
+              <h4>Free High-Speed Wi-Fi</h4>
+              <p>Stay connected with complimentary internet</p>
+            </div>
+          </div>
+          
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="400">
+            <div class="feature-card">
+              <i class="fas fa-shield-alt"></i>
+              <h4>Safe & Secure</h4>
+              <p>24/7 security for your peace of mind</p>
+            </div>
+          </div>
+          
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="500">
+            <div class="feature-card">
+              <i class="fas fa-gem"></i>
+              <h4>Affordable Luxury</h4>
+              <p>Premium experience at competitive rates</p>
+            </div>
+          </div>
+          
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="600">
+            <div class="feature-card">
+              <i class="fas fa-tshirt"></i>
+              <h4>Laundry Service</h4>
+              <p>Professional laundry and dry cleaning</p>
+            </div>
+          </div>
+          
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="700">
+            <div class="feature-card">
+              <i class="fas fa-clock"></i>
+              <h4>Instant Book</h4>
+              <p>Quick and easy reservation process</p>
+            </div>
+          </div>
+          
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="800">
+            <div class="feature-card">
+              <i class="fas fa-laptop"></i>
+              <h4>Business Workspace</h4>
+              <p>Dedicated areas for business travelers</p>
+            </div>
+          </div>
+          
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="900">
+            <div class="feature-card">
+              <i class="fas fa-utensils"></i>
+              <h4>Complimentary Breakfast</h4>
+              <p>Start your day with delicious breakfast</p>
+            </div>
+          </div>
+          
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="1000">
+            <div class="feature-card">
+              <i class="fas fa-room-service"></i>
+              <h4>24/7 Room Service</h4>
+              <p>Round-the-clock dining at your convenience</p>
+            </div>
+          </div>
+          
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="1100">
+            <div class="feature-card">
+              <i class="fas fa-concierge-bell"></i>
+              <h4>24/7 Front Desk</h4>
+              <p>Always available to assist you</p>
+            </div>
+          </div>
+          
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="1200">
+            <div class="feature-card">
+              <i class="fas fa-plane"></i>
+              <h4>Travel Assistance</h4>
+              <p>Complete travel desk services</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Nearby Attractions -->
+    <section class="attractions section-padding">
+      <div class="container">
+        <div class="section-title" data-aos="fade-up">
+          <h2>Explore Nearby Attractions</h2>
+          <p>Discover the rich heritage and culture of Hyderabad</p>
+        </div>
+        
+        <div class="row g-4">
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="attraction-card">
+              <img src="https://images.unsplash.com/photo-1518005020951-eccb494ad742?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Charminar">
+              <div class="card-body">
+                <h5>Charminar</h5>
+                <p>Iconic monument and symbol of Hyderabad</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="attraction-card">
+              <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Golconda Fort">
+              <div class="card-body">
+                <h5>Golconda Fort</h5>
+                <p>Historic fortress with stunning architecture</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
+            <div class="attraction-card">
+              <img src="https://images.unsplash.com/photo-1500673922987-e212871fec22?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Hussain Sagar">
+              <div class="card-body">
+                <h5>Hussain Sagar</h5>
+                <p>Beautiful lake with Buddha statue</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="400">
+            <div class="attraction-card">
+              <img src="https://images.unsplash.com/photo-1721322800607-8c38375eef04?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Cultural Events">
+              <div class="card-body">
+                <h5>Cultural Events</h5>
+                <p>Rich cultural heritage and festivals</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="section-padding">
+      <div class="container">
+        <div class="section-title" data-aos="fade-up">
+          <h2>What Our Guests Say</h2>
+          <p>Read reviews from our valued guests</p>
+        </div>
+        
+        <div class="row g-4">
+          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="testimonial-card">
+              <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+              <p>"Exceptional service and beautiful rooms. The location is perfect for exploring Hyderabad. Highly recommended!"</p>
+              <h6>Rajesh Kumar</h6>
+              <small>Presidential Suite</small>
+            </div>
+          </div>
+          
+          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="testimonial-card">
+              <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+              <p>"Great value for money. The staff was incredibly friendly and the breakfast was delicious. Will definitely return!"</p>
+              <h6>Priya Sharma</h6>
+              <small>Family Room</small>
+            </div>
+          </div>
+          
+          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="300">
+            <div class="testimonial-card">
+              <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+              <p>"Perfect for business travelers. Great workspace, excellent WiFi, and professional service throughout my stay."</p>
+              <h6>Amit Patel</h6>
+              <small>Single Room</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section-padding bg-light">
+      <div class="container">
+        <div class="section-title" data-aos="fade-up">
+          <h2>Frequently Asked Questions</h2>
+          <p>Find answers to common questions about our hotel</p>
+        </div>
+        
+        <div class="row">
+          <div class="col-lg-8 mx-auto" data-aos="fade-up" data-aos-delay="100">
+            <div class="accordion" id="faqAccordion">
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                    What are the check-in and check-out times?
+                  </button>
+                </h2>
+                <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                  <div class="accordion-body">
+                    Check-in time is 2:00 PM and check-out time is 12:00 PM. Early check-in and late check-out may be available upon request.
+                  </div>
+                </div>
+              </div>
+              
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                    Do you provide airport transportation?
+                  </button>
+                </h2>
+                <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                  <div class="accordion-body">
+                    Yes, we offer airport pickup and drop services. Please contact our travel desk at the time of booking to arrange transportation.
+                  </div>
+                </div>
+              </div>
+              
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                    Is breakfast included in the room rate?
+                  </button>
+                </h2>
+                <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                  <div class="accordion-body">
+                    Yes, complimentary breakfast is included with all our room bookings. We serve a variety of Indian and continental breakfast options.
+                  </div>
+                </div>
+              </div>
+              
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                    Do you have parking facilities?
+                  </button>
+                </h2>
+                <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                  <div class="accordion-body">
+                    Yes, we provide free parking for all our guests. Our parking area is secure and monitored 24/7.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="row g-4">
+          <div class="col-lg-4">
+            <h5><i class="fas fa-rose me-2"></i>The Rose Residency Inn</h5>
+            <p>Experience affordable luxury in the heart of Hyderabad. Your comfort is our priority.</p>
+            <div class="social-links">
+              <a href="#" class="me-3"><i class="fab fa-facebook-f"></i></a>
+              <a href="#" class="me-3"><i class="fab fa-instagram"></i></a>
+              <a href="#" class="me-3"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+          </div>
+          
+          <div class="col-lg-2">
+            <h5>Quick Links</h5>
+            <ul class="list-unstyled">
+              <li><a href="#home">Home</a></li>
+              <li><a href="#about">About</a></li>
+              <li><a href="#rooms">Rooms</a></li>
+              <li><a href="#amenities">Amenities</a></li>
+              <li><a href="#gallery">Gallery</a></li>
+            </ul>
+          </div>
+          
+          <div class="col-lg-3">
+            <h5>Contact Info</h5>
+            <ul class="list-unstyled">
+              <li><i class="fas fa-map-marker-alt me-2"></i>A/1, Plot No 44, Main Road, MLA Colony, Banjara Hills, Hyderabad 500034</li>
+              <li><i class="fas fa-phone me-2"></i>+91 9346017770</li>
+              <li><i class="fas fa-envelope me-2"></i>reservations.residencyinn@gmail.com</li>
+            </ul>
+          </div>
+          
+          <div class="col-lg-3">
+            <h5>Location</h5>
+            <div class="map-container">
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.582168729942!2d78.4089!3d17.4268!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb9734c0b5b8e5%3A0x7f5b9c2a8f9c3e2!2sBanjara%20Hills%2C%20Hyderabad%2C%20Telangana!5e0!3m2!1sen!2sin!4v1635000000000!5m2!1sen!2sin" width="100%" height="150" style="border:0; border-radius: 10px;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+          </div>
+        </div>
+        
+        <hr class="my-4">
+        
+        <div class="row">
+          <div class="col-md-6">
+            <p>&copy; 2024 The Rose Residency Inn. All rights reserved.</p>
+          </div>
+          <div class="col-md-6 text-md-end">
+            <p>Designed and Developed by <a href="https://www.sritechnologies.in" target="_blank">www.sritechnologies.in</a></p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#home" class="back-to-top" id="backToTop">
+      <i class="fas fa-chevron-up"></i>
+    </a>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- AOS Animation JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <script>
+      // Initialize AOS
+      AOS.init({
+        duration: 1000,
+        once: true
+      });
+      
+      // Back to top button
+      window.addEventListener('scroll', function() {
+        const backToTop = document.getElementById('backToTop');
+        if (window.pageYOffset > 300) {
+          backToTop.classList.add('show');
+        } else {
+          backToTop.classList.remove('show');
+        }
+      });
+      
+      // Smooth scrolling for navigation links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            target.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
+        });
+      });
+      
+      // Navbar background on scroll
+      window.addEventListener('scroll', function() {
+        const navbar = document.querySelector('.navbar');
+        if (window.pageYOffset > 50) {
+          navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+        } else {
+          navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+        }
+      });
+    </script>
   </body>
 </html>
